@@ -1,0 +1,179 @@
+/* ====== Base ====== */
+:root{
+  --bg: #0b1020;
+  --surface: rgba(255,255,255,.06);
+  --surface-2: rgba(255,255,255,.10);
+  --border: rgba(255,255,255,.14);
+
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+
+  --primary: #7c3aed;  /* roxo elegante */
+  --primary-2: #a78bfa;
+  --danger: #ef4444;
+
+  --radius: 14px;
+  --shadow: 0 18px 50px rgba(0,0,0,.45);
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+
+  /* fundo com gradiente sutil */
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,.22), transparent 60%),
+    radial-gradient(900px 500px at 90% 15%, rgba(59,130,246,.18), transparent 55%),
+    radial-gradient(900px 500px at 50% 110%, rgba(16,185,129,.14), transparent 60%),
+    linear-gradient(180deg, #070a14 0%, #0b1020 60%, #070a14 100%);
+}
+
+/* centraliza e limita largura */
+#app, #res{
+  width: min(920px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* ====== Caixa de criação (topo) ====== */
+#app{
+  margin-top: 28px;
+  padding: 16px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--surface), rgba(255,255,255,.03));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+
+  backdrop-filter: blur(10px);
+}
+
+/* input de texto */
+#idMessage{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  outline: none;
+
+  background: rgba(0,0,0,.22);
+  color: var(--text);
+  font-size: 0.98rem;
+
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+#idMessage::placeholder{ color: rgba(255,255,255,.45); }
+
+#idMessage:focus{
+  border-color: rgba(167,139,250,.65);
+  box-shadow: 0 0 0 4px rgba(124,58,237,.18);
+  background: rgba(0,0,0,.30);
+}
+
+/* botões */
+#app input[type="button"]{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  cursor: pointer;
+
+  color: var(--text);
+  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  transition: transform .06s ease, border-color .2s, background .2s, box-shadow .2s, opacity .2s;
+  box-shadow: 0 10px 26px rgba(0,0,0,.25);
+}
+
+#app input[type="button"]:hover{
+  border-color: rgba(167,139,250,.55);
+  background: linear-gradient(180deg, rgba(167,139,250,.22), rgba(255,255,255,.06));
+}
+
+#app input[type="button"]:active{
+  transform: translateY(1px);
+}
+
+/* Diferencia os dois botões (assumindo: 1º = Adicionar, 2º = Remover) */
+#app input[type="button"]:nth-of-type(1){
+  border-color: rgba(124,58,237,.45);
+  background: linear-gradient(180deg, rgba(124,58,237,.45), rgba(124,58,237,.18));
+}
+
+#app input[type="button"]:nth-of-type(1):hover{
+  box-shadow: 0 12px 30px rgba(124,58,237,.22);
+}
+
+#app input[type="button"]:nth-of-type(2){
+  border-color: rgba(239,68,68,.35);
+  background: linear-gradient(180deg, rgba(239,68,68,.35), rgba(239,68,68,.14));
+}
+
+#app input[type="button"]:nth-of-type(2):hover{
+  box-shadow: 0 12px 30px rgba(239,68,68,.18);
+}
+
+/* ====== Área de postagens ====== */
+#res{
+  margin: 16px auto 32px;
+  padding: 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,.04);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+
+  min-height: 320px; /* espaço de postagem */
+}
+
+/* Caso você vá inserir posts como <div class="post">...</div> */
+#res .post{
+  padding: 14px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  margin-bottom: 12px;
+}
+
+#res .post:last-child{ margin-bottom: 0; }
+
+#res .post .meta{
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+#res .post .content{
+  line-height: 1.45;
+}
+
+/* estado vazio (opcional: colocar um <p class="empty">...) */
+#res .empty{
+  margin: 0;
+  color: rgba(255,255,255,.55);
+  text-align: center;
+  padding: 26px 10px;
+  border: 1px dashed rgba(255,255,255,.18);
+  border-radius: 12px;
+  background: rgba(0,0,0,.16);
+}
+
+/* ====== Responsivo ====== */
+@media (max-width: 640px){
+  #app{
+    grid-template-columns: 1fr;
+  }
+
+  #app input[type="button"]{
+    width: 100%;
+  }
+}
