@@ -9,6 +9,7 @@ add.addEventListener('click',()=>{
   const name = document.querySelector('#idMessage').value
   const nameString = name.toString()
   user.push(nameString)
+  window.alert("Adicionado")
   getUsers()
 
 })
@@ -16,8 +17,9 @@ add.addEventListener('click',()=>{
 rem.addEventListener('click',()=>{
   const namerev = document.querySelector('#idMessage').value
   const nameValue = user.indexOf(namerev)
-  user.pop(nameValue)
-  
+  console.log(nameValue)
+  user.splice(nameValue,1)
+  window.alert(namerev + " Removido")
   getUsers()
 })
 
