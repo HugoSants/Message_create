@@ -10,6 +10,7 @@ A ideia é ter uma interface simples para **criar e remover mensagens**, onde a 
 - Treinar estrutura básica de HTML
 - Aplicar estilos com CSS (layout, responsividade e aparência elegante)
 - Simular um pequeno “mural” de mensagens (posts)
+- Simular um pequeno “mural” de mensagens (posts)
 
 ## Como executar
 
