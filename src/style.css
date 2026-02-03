@@ -25,11 +25,15 @@ body{
   color: var(--text);
 
   /* fundo com gradiente sutil */
+  background-color: #7c3aed;
+  /*
   background:
     radial-gradient(1200px 600px at 10% 10%, rgba(93, 0, 255, 0.22), transparent 60%),
     radial-gradient(900px 500px at 90% 15%, rgba(59,130,246,.18), transparent 55%),
     radial-gradient(900px 500px at 50% 110%, rgba(16,185,129,.14), transparent 60%),
     linear-gradient(180deg, #131b35 0%, #0c101f 60%, #070a14 100%);
+  */
+
 }
 
 /* centraliza e limita largura */
