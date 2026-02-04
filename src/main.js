@@ -9,7 +9,6 @@ add.addEventListener('click',()=>{
   const name = document.querySelector('#idMessage').value
   const nameString = name.toString()
   user.push(nameString)
-  window.alert("Adicionado")
   getUsers()
 
 })
@@ -27,6 +26,7 @@ function getUsers(){
   resp.innerHTML = ''
   user.forEach(item => {
     resp.innerHTML += '</br>-'+item
+    resp.innerHTML += ' <input type="button" value="Remover" id="idRemov">'
   })
 }
 
