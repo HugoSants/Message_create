@@ -3,7 +3,7 @@ const resp = document.querySelector("#res")
 const add = document.querySelector("#idAdd") 
 const rem = document.querySelector("#idRemov") 
 
-let user = ['João', 'Maria']
+let user = ['João', 'Maria'] 
 
 add.addEventListener('click',()=>{
   const name = document.querySelector('#idMessage').value
