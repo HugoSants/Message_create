@@ -1,28 +1,55 @@
+const resp = document.querySelector("#res");
+const addButton = document.querySelector("#idAdd");
+const input = document.querySelector("#idMessage");
 
-const resp = document.querySelector("#res")
-const add = document.querySelector("#idAdd") 
+const users = ["João", "Maria"];
 
-let user = ['João', 'Maria'] 
-
-add.addEventListener('click',()=>{
-  const name = document.querySelector('#idMessage').value
-  const nameString = name.toString()
-  user.push(nameString)
-  getUsers()
-
-})
-
-function getUsers(){
-  resp.innerHTML = ''
-  user.forEach((item,index) => {
-    resp.innerHTML += '</br>-'+item
-    resp.innerHTML += `<button onclick="removeUser(${index})">Remover</button>`
-  })
+function getInputValue() {
+  return input.value.trim();
 }
 
-window.removeUser = function(index){
-  user.splice(index, 1)
-  getUsers()
+function clearInput() {
+  input.value = "";
+  input.focus();
 }
 
-getUsers()
+function createUserItem(name, index) {
+  const wrapper = document.createElement("div");
+
+  const text = document.createElement("span");
+  text.textContent = `- ${name} `;
+
+  const button = document.createElement("button");
+  button.textContent = "Remover";
+  button.addEventListener("click", () => removeUser(index));
+
+  wrapper.appendChild(text);
+  wrapper.appendChild(button);
+
+  return wrapper;
+}
+
+function renderUsers() {
+  resp.innerHTML = "";
+  users.forEach((user, index) => {
+    resp.appendChild(createUserItem(user, index));
+  });
+}
+
+function addUser() {
+  const name = getInputValue();
+  if (!name) return;
+
+  users.push(name);
+  renderUsers();
+  clearInput();
+}
+
+function removeUser(index) {
+  users.splice(index, 1);
+  renderUsers();
+}
+
+addButton.addEventListener("click", addUser);
+
+renderUsers();
